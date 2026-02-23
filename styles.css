@@ -64,6 +64,13 @@ main {
 
 }
 
+#tasks-list-container ol li div {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    border-right: 2px solid black;
+}
+
 
 h1 {
     text-align: center;
