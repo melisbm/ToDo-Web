@@ -68,7 +68,8 @@ main {
     display: flex;
     flex-direction: row;
     padding: 0;
-    border-right: 2px solid black;
+    border-radius: 14px 0px 0px 14px;
+    border-right: 3px solid rgb(0, 0, 0);
 }
 
 

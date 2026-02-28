@@ -17,12 +17,10 @@ function addTask(taskName, taskDescription) {
 
     const taskDescriptionLabel = document.createElement("p");
     const itemFront = document.createElement("div");
-    const divider = document.createElement("vr");
     taskDescriptionLabel.textContent = taskDescription;
 
     itemFront.appendChild(indexLabel);
     itemFront.appendChild(taskLabel);
-    itemFront.appendChild(divider);
 
     task.appendChild(itemFront);
     task.appendChild(taskDescriptionLabel);
