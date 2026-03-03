@@ -50,10 +50,12 @@ main {
 #tasks-list-container ol li {
     display: flex;
     flex-direction: row;
+    align-items: center;
     background-color: rgb(180, 180, 180);
     border-radius: 14px;
     width: fit-content;
-
+    padding: 5px 10px;
+    gap: 10px;
 }
 
 #tasks-list-container ol li p:first-child {
@@ -64,12 +66,31 @@ main {
 
 }
 
+.task-desc {
+    font-weight: normal;
+}
+
+
 #tasks-list-container ol li div {
     display: flex;
     flex-direction: row;
     padding: 0;
     border-radius: 14px 0px 0px 14px;
     border-right: 3px solid rgb(0, 0, 0);
+}
+
+.delete-btn {
+    margin-left: auto;
+    background-color: #c00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.delete-btn:hover {
+    background-color: #a00;
 }
 
 

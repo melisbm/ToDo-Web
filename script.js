@@ -6,15 +6,13 @@ const endDate = document.getElementById("end-date");
 const noTasksText = document.querySelector("#tasks-list-container p");
 
 let totalTasksOnList = 0;
-let index = 1;
 
 function addTask(taskName, taskDescription, taskStartDate, taskEndDate) {
 
     const task = document.createElement("li");
 
     const mainLabel = document.createElement("p");
-    mainLabel.textContent = `${index} ${taskName} | ${taskDescription}`;
-    index++;
+    mainLabel.innerHTML = `<span class="task-name">${taskName}</span> | <span class="task-desc">${taskDescription}</span>`;
 
     const dateLabel = document.createElement("p");
 
@@ -40,6 +38,19 @@ function addTask(taskName, taskDescription, taskStartDate, taskEndDate) {
 
     task.appendChild(mainLabel);
     task.appendChild(dateLabel);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.addEventListener("click", function () {
+        tasksList.removeChild(task);
+        totalTasksOnList--;
+        if (totalTasksOnList === 0) {
+            noTasksText.style.display = "block";
+        }
+    });
+
+    task.appendChild(deleteBtn);
 
     tasksList.appendChild(task);
 
@@ -71,6 +82,11 @@ document.querySelector('form').addEventListener("submit", function (event) {
 
     if (!taskStartDate || !taskEndDate) {
         alert("Please enter both a start date and an end date.");
+        return;
+    }
+
+    if(taskStartDate > taskEndDate) {
+        alert("Start date cannot be later than end date.");
         return;
     }
 
