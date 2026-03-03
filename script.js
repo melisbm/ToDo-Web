@@ -12,27 +12,15 @@ function addTask(taskName, taskDescription, taskStartDate, taskEndDate) {
 
     const task = document.createElement("li");
 
-    const taskLabel = document.createElement("p");
-    const indexLabel = document.createElement("p");
-    indexLabel.textContent = index++;
-    taskLabel.textContent = taskName;
+    const mainLabel = document.createElement("p");
+    mainLabel.textContent = `${index} ${taskName} | ${taskDescription}`;
+    index++;
 
-    const taskDescriptionLabel = document.createElement("p");
-    const itemFront = document.createElement("div");
-    taskDescriptionLabel.textContent = taskDescription;
-
-    const dateContainer = document.createElement("div");
     const dateLabel = document.createElement("p");
-    dateLabel.textContent = "Start: " + taskStartDate + " End: " + taskEndDate;
+    dateLabel.textContent = `(${taskStartDate}${taskEndDate ? " - " + taskEndDate : ""})`;
 
-    dateContainer.appendChild(dateLabel);
-
-    itemFront.appendChild(indexLabel);
-    itemFront.appendChild(taskLabel);
-
-    task.appendChild(itemFront);
-    task.appendChild(taskDescriptionLabel);
-    task.appendChild(dateContainer)
+    task.appendChild(mainLabel);
+    task.appendChild(dateLabel);
 
     tasksList.appendChild(task);
 
@@ -43,6 +31,9 @@ function addTask(taskName, taskDescription, taskStartDate, taskEndDate) {
     }
 
     taskInput.value = "";
+    taskDescriptionInput.value = "";
+    startDate.value = "";
+    endDate.value = "";
 }
 
 document.querySelector('form').addEventListener("submit", function (event) {
