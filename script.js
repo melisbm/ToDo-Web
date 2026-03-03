@@ -17,7 +17,25 @@ function addTask(taskName, taskDescription, taskStartDate, taskEndDate) {
     index++;
 
     const dateLabel = document.createElement("p");
-    dateLabel.textContent = `(${taskStartDate}${taskEndDate ? " - " + taskEndDate : ""})`;
+
+    let dateText;
+    const today = new Date().toISOString().split('T')[0];
+    if (!taskStartDate && !taskEndDate) {
+        dateText = "Today";
+    }
+    else if (
+        taskStartDate &&
+        taskEndDate &&
+        taskStartDate === taskEndDate &&
+        taskStartDate === today
+    ){
+        dateText = "Today";
+    }
+    else {
+        dateText = `(${taskStartDate}${taskEndDate ? " - " + taskEndDate : ""})`;
+    }
+    
+    dateLabel.textContent = dateText;
 
     task.appendChild(mainLabel);
     task.appendChild(dateLabel);
@@ -44,7 +62,11 @@ document.querySelector('form').addEventListener("submit", function (event) {
 
     const taskStartDate = startDate.value;
     const taskEndDate = endDate.value;
-    console.log(taskStartDate);
+
+    if (!taskStartDate || !taskEndDate) {
+        alert("Please enter both a start date and an end date.");
+        return;
+    }
 
     addTask(taskName, taskDescription, taskStartDate, taskEndDate);
 });
